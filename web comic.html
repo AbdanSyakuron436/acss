@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DadanScans.com</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: black;
+  padding: 15px;
+  text-align: center;
+  border-bottom: 3px solid white;
+}
+
+.page-info {
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.comic {
+  max-width: 900px;
+  margin: auto;
+  padding: 10px;
+}
+
+.comic img {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  border: 2px solid white;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>When The System Opens After The Age Of 100, All Grandchildren Kneel Upon The Mountains!</h2>
+</header>
+
+<div class="page-info" id="pageInfo"></div>
+
+<div class="comic" id="comic"></div>
+
+<div class="nav">
+  <button onclick="prevPage()">⬅ Prev</button>
+  <button onclick="nextPage()">Next ➡</button>
+</div>
+
+<script>
+/* =====================================================
+   📌 TARO LINK IMGUR DI SINI
+   SETIAP [] = 1 PAGE
+===================================================== */
+
+const pages = [
+  // ===== PAGE 1 =====
+  [
+    "https://imgur.com/jf9YXoV",
+    "https://imgur.com/edekqO1",
+    "https://imgur.com/45MjPJ4",
+    "https://imgur.com/J9o7hbi",
+    "https://imgur.com/EDy9JzK",
+    "https://imgur.com/ZJsUCIE",
+    "https://imgur.com/RKH9Ndv",
+    "https://imgur.com/OAQC8VJ",
+    "https://imgur.com/ARytTy0",
+    "https://imgur.com/p1C05Qe",
+    "https://imgur.com/g8RjY3r",
+    "https://imgur.com/w4QWOXP",
+    "https://imgur.com/lTOLwyE",
+    "https://imgur.com/kfOKhV6",
+    "https://imgur.com/3F2PYk4",
+    "https://imgur.com/B3VshrA",
+    "https://imgur.com/erIXU2D"
+  ],
+
+  // ===== PAGE 2 =====
+  [
+    "https://i.imgur.com/BBBBB01.jpg",
+    "https://i.imgur.com/BBBBB02.jpg"
+  ],
+
+  // ===== PAGE 3 =====
+  [
+    "https://i.imgur.com/CCCCC01.jpg"
+  ]
+];
+
+/* ===================================================== */
+
+let currentPage = 0;
+const comicDiv = document.getElementById("comic");
+const pageInfo = document.getElementById("pageInfo");
+
+function loadPage() {
+  comicDiv.innerHTML = "";
+  pageInfo.innerText = ` Chapter ${currentPage + 1} dari ${pages.length}`;
+
+  pages[currentPage].forEach(link => {
+    const img = document.createElement("img");
+    img.src = link;
+    comicDiv.appendChild(img);
+  });
+
+  window.scrollTo(0, 0);
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    currentPage++;
+    loadPage();
+  } else {
+    alert("Ini halaman terakhir!");
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    loadPage();
+  } else {
+    alert("Ini halaman pertama!");
+  }
+}
+
+loadPage();
+</script>
+
+</body>
+</html>
